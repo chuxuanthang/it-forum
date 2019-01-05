@@ -30,8 +30,13 @@ Route::group(['middleware' => 'Language'], function() {
             Route::post('/editPassword', 'UserController@editPassword')->name('home.user.editPassword');
         });
     });
-    Route::get('/tag', 'TagController@index')->name('home.tag.index');
-    Route::get('/tag/detail', 'TagController@detail')->name('home.tag.detail');
+    // Tag
+    Route::group(['prefix' => 'tag'], function() {
+        Route::get('/', 'TagController@index')->name('home.tag.index');
+        Route::post('/postIndex', 'TagController@postIndex')->name('home.tag.postIndex');
+        Route::get('/{tagName?}', 'TagController@detail')->name('home.tag.detail')->where(['tagName' => '[-0-9.a-z]+']);
+        Route::get('/i/{tagName}', 'TagController@info')->name('home.tag.info')->where(['tagName' => '[-0-9.a-z]+']);
+    });
     Route::any('/signup', 'LoginController@signup')->name('home.signup');
     Route::any('/postSignup', 'LoginController@postSignup')->name('home.postSignup');
     Route::get('/login', 'LoginController@login')->name('home.login');
@@ -43,8 +48,9 @@ Route::group(['middleware' => 'Language'], function() {
 admin route
 */
 
-Route::group(['middleware' => 'Language', 'prefix' => 'admin'], function() {
+Route::group(['middleware' => ['Language', 'admin'], 'prefix' => 'admin'], function() {
     Route::get('/', 'Admin\UserController@index')->name('admin.index');
+    Route::get('/logout', 'Admin\UserController@logout')->name('admin.logout');
     Route::group(['prefix' => 'user'], function() {
         Route::get('/', 'Admin\UserController@index')->name('admin.user.index');
         Route::get('/search', 'Admin\UserController@search')->name('admin.user.search');
@@ -53,5 +59,22 @@ Route::group(['middleware' => 'Language', 'prefix' => 'admin'], function() {
         Route::get('/delete/{id}', 'Admin\UserController@delete')->name('admin.user.delete');
         Route::get('/edit/{id}', 'Admin\UserController@edit')->name('admin.user.edit');
         Route::post('/update', 'Admin\UserController@update')->name('admin.user.update');
+    });
+    Route::group(['prefix' => 'post'], function() {
+        Route::get('/', 'Admin\PostController@index')->name('admin.post.index');
+        Route::get('/search', 'Admin\PostController@search')->name('admin.post.search');
+        Route::post('/add', 'Admin\PostController@add')->name('admin.post.add');
+        Route::get('/delete/{id}', 'Admin\PostController@delete')->name('admin.post.delete');
+        Route::get('/edit/{id}', 'Admin\PostController@edit')->name('admin.post.edit');
+        Route::post('/update', 'Admin\PostController@update')->name('admin.post.update');
+    });
+    Route::group(['prefix' => 'tag'], function() {
+        Route::get('/', 'Admin\TagController@index')->name('admin.tag.index');
+        Route::get('/search', 'Admin\TagController@search')->name('admin.tag.search');
+        Route::get('/create', 'Admin\TagController@create')->name('admin.tag.create');
+        Route::post('/add', 'Admin\TagController@add')->name('admin.tag.add');
+        Route::get('/delete/{id}', 'Admin\TagController@delete')->name('admin.tag.delete');
+        Route::get('/edit/{id}', 'Admin\TagController@edit')->name('admin.tag.edit');
+        Route::post('/update', 'Admin\TagController@update')->name('admin.tag.update');
     });
 });

@@ -14,6 +14,7 @@ return [
     'category' => [
         'user' => 'Người dùng',
         'post' => 'Bài viết',
+        'tag' => 'Thẻ',
     ],
 
     'alert' => [
@@ -28,9 +29,14 @@ return [
         'delete' => 'Xóa',
         'edit' => 'Chỉnh sửa',
         'listUser' => 'Danh sách người dùng',
+        'listPost' => 'Danh sách bài viết',
+        'listTag' => 'Danh sách thẻ',
         'search' => 'Tìm kiếm',
         'addUser' => 'Thêm người dùng',
+        'addTag' => 'Thêm thẻ',
         'editUser' => 'Sửa người dùng',
+        'editPost' => 'Sửa bài viết',
+        'editTag' => 'Sửa thẻ',
     ],
 
     'form' => [
@@ -46,5 +52,11 @@ return [
         'address' => 'Địa chỉ',
         'status' => 'Trạng thái',
         'action' => 'Hành động',
+        'title' => 'Tiêu đề',
+        'content' => 'Nội dung',
+        'total_vote' => 'Lượt vote',
+        'total_answer' => 'Lượt trả lời',
+        'total_view' => 'Lượt xem',
+        'name' => 'Tên',
     ],
 ];
