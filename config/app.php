@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class, // Repository
         Collective\Html\HtmlServiceProvider::class,
+        'Barryvdh\Debugbar\ServiceProvider',
 
     ],
 
@@ -228,6 +229,7 @@ return [
         'Input' => Illuminate\Support\Facades\Input::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Debugbar' => 'Barryvdh\Debugbar\Facade',
 
     ],
 
