@@ -43,5 +43,6 @@ return [
         'followed' => 'Bạn đã được <strong>:follower</strong> theo dõi',
         'posted' => '<strong>:following</strong> đã đăng bài viết: <strong>:post</strong>',
         'welcome' => 'Xin chào bạn đã đến với Stack Overfollower!',
+        'block' => 'Bài viết này đã bị khóa bởi quản trị viên.'
     ],
 ];

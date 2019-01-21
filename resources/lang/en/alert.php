@@ -43,5 +43,6 @@ return [
         'followed' => 'You are followed by :follower',
         'posted' => ':following posted: :post',
         'welcome' => 'Welcome to Stack Overfollower!',
+        'block' => 'This post have been blocked by Admin.'
     ],
 ];

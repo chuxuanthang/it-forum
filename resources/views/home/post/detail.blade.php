@@ -110,30 +110,31 @@
                         @endforeach
                     </div>
                 </div>
+                @if ($post->status == '1')
+                    @if (Auth::check())
+                        <div>
+                            <a class="js-add-link comments-link disabled-link showForm" data-form="formReplyPost">{{ __('page.post.addComment') }}</a>
+                            <span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+                            <a href="#" class="js-show-link comments-link dno"> 
+                            </a>
+                        </div>
 
-                @if (Auth::check())
-                    <div>
-                        <a class="js-add-link comments-link disabled-link showForm" data-form="formReplyPost">{{ __('page.post.addComment') }}</a>
-                        <span class="js-link-separator dno">&nbsp;|&nbsp;</span>
-                        <a href="#" class="js-show-link comments-link dno"> 
-                        </a>
-                    </div>
-
-                    {!! Form::open(['id' => 'formReplyPost', 'class' => 'formReply hidden', 'route' => 'home.post.postComment']) !!}
-                        <div id="post-editor" class="post-editor js-post-editor js-wz-element">
-                            <div class="ps-relative">
-                                <div class="wmd-container mb8">
-                                    {!! Form::textarea('content', null, ['id' => 'wmd-button-bar', 'class' => 'wmd-button-bar btr-sm', 'rows' => '4']) !!}
-                                </div>
-                                {{ Form::hidden('target', 1) }}
-                                <div><span id="formReplyPostErrors" class="errors"></span></div>
-                                <div class="wmd-container mb8">
-                                    <a class="btn postComment" data-target="repliesPostBox" data-form="formReplyPost">{{ __('page.post.comment') }}</a>
-                                    <a class="hideForm">{{ __('page.user.btnCancel') }}</a>
+                        {!! Form::open(['id' => 'formReplyPost', 'class' => 'formReply hidden', 'route' => 'home.post.postComment']) !!}
+                            <div id="post-editor" class="post-editor js-post-editor js-wz-element">
+                                <div class="ps-relative">
+                                    <div class="wmd-container mb8">
+                                        {!! Form::textarea('content', null, ['id' => 'wmd-button-bar', 'class' => 'wmd-button-bar btr-sm', 'rows' => '4']) !!}
+                                    </div>
+                                    {{ Form::hidden('target', 1) }}
+                                    <div><span id="formReplyPostErrors" class="errors"></span></div>
+                                    <div class="wmd-container mb8">
+                                        <a class="btn postComment" data-target="repliesPostBox" data-form="formReplyPost">{{ __('page.post.comment') }}</a>
+                                        <a class="hideForm">{{ __('page.user.btnCancel') }}</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {!! Form::close() !!}
+                        {!! Form::close() !!}
+                    @endif
                 @endif
             </div>
             <!-- end post replies -->
@@ -238,29 +239,31 @@
                                 </ul>
                             @endforeach
                             </div>
-                            @if (Auth::check())
-                                <div>
-                                    <a class="js-add-link comments-link disabled-link showForm" data-form="formReplyAnswers{{ $key }}">{{ __('page.post.addComment') }}</a>
-                                    <span class="js-link-separator dno">&nbsp;|&nbsp;</span>
-                                    <a href="#" class="js-show-link comments-link dno"></a>
-                                </div>
-                                {!! Form::open(['id' => 'formReplyAnswers' . $key, 'route' => 'home.post.postComment', 'class' => 'formReply hidden']) !!}
-                                    <div class="post-editor js-post-editor js-wz-element">
-                                        <div class="ps-relative"> 
-                                            <div class="wmd-container mb8">
-                                                {!! Form::textarea('content', null, ['id' => 'wmd-button-bar', 'class' => 'wmd-button-bar btr-sm', 'rows' => '4']) !!}
-                                            </div>
-                                            {{ Form::hidden('target', 2) }}
-                                            {{ Form::hidden('answer_id', $answer->id) }}
-                                            <div><span id="formReplyAnswers{{ $key }}Errors" class="errors"></span></div>
-                                            <div class="wmd-container mb8">
-                                                <a class="btn postComment" data-target="repliesAnswerBox{{ $key }}" data-form="formReplyAnswers{{ $key }}">{{ __('page.post.comment') }}</a>
-                                                <a class="hideForm">{{ __('page.user.btnCancel') }}</a>
+                            @if ($post->status == '1')
+                                @if (Auth::check())
+                                    <div>
+                                        <a class="js-add-link comments-link disabled-link showForm" data-form="formReplyAnswers{{ $key }}">{{ __('page.post.addComment') }}</a>
+                                        <span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+                                        <a href="#" class="js-show-link comments-link dno"></a>
+                                    </div>
+                                    {!! Form::open(['id' => 'formReplyAnswers' . $key, 'route' => 'home.post.postComment', 'class' => 'formReply hidden']) !!}
+                                        <div class="post-editor js-post-editor js-wz-element">
+                                            <div class="ps-relative"> 
+                                                <div class="wmd-container mb8">
+                                                    {!! Form::textarea('content', null, ['id' => 'wmd-button-bar', 'class' => 'wmd-button-bar btr-sm', 'rows' => '4']) !!}
+                                                </div>
+                                                {{ Form::hidden('target', 2) }}
+                                                {{ Form::hidden('answer_id', $answer->id) }}
+                                                <div><span id="formReplyAnswers{{ $key }}Errors" class="errors"></span></div>
+                                                <div class="wmd-container mb8">
+                                                    <a class="btn postComment" data-target="repliesAnswerBox{{ $key }}" data-form="formReplyAnswers{{ $key }}">{{ __('page.post.comment') }}</a>
+                                                    <a class="hideForm">{{ __('page.user.btnCancel') }}</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                {!! Form::close() !!}
-                            @endif 
+                                    {!! Form::close() !!}
+                                @endif
+                            @endif
                         </div>
                         <!-- end answers replies -->
                     </div>
@@ -272,32 +275,37 @@
         </div>
     </div>
     <div id="comment-div">
-        @if (!Auth::check())
-            <h2 class="bottom-notice">
-                {!! __('page.account.dontLoggedYet', [
-                    'login' => '<a href="' . route('home.login') . '">' . __('page.account.login') . '</a>',
-                    'signup' => '<a href="' . route('home.signup') . '">' . __('page.account.signup') . '</a>',
-                ]) !!}
-            </h2>
-        @else
-        <!-- end answers section -->
-        {!! Form::open(['id' => 'formAnswer', 'route' => 'home.post.postComment']) !!}
-            <h2 class="space">{{ __('page.post.comment') }}</h2>
-            <div class="post-editor js-post-editor js-wz-element">
-                <div class="ps-relative"> 
-                    <div class="wmd-container mb8">
-                        {!! Form::textarea('content', null, ['id' => 'editor', 'class' => 'wmd-button-bar btr-sm', 'rows' => '8']) !!}
-                    </div>
-                    {{ Form::hidden('target', 3) }}
-                    {{ Form::hidden('key', $key, ['id' => 'keyInput']) }}
-                    <div><span id="formAnswerErrors" class="errors"></span></div>
-                    <div class="wmd-container mb8">
-                        <a class="btn postComment" data-ckeditor="yes" data-target="answersPost" data-form="formAnswer">{{ __('page.post.comment') }}</a>
+        @if ($post->status == '1')
+            @if (!Auth::check())
+                <h2 class="bottom-notice">
+                    {!! __('page.account.dontLoggedYet', [
+                        'login' => '<a href="' . route('home.login') . '">' . __('page.account.login') . '</a>',
+                        'signup' => '<a href="' . route('home.signup') . '">' . __('page.account.signup') . '</a>',
+                    ]) !!}
+                </h2>
+            @else
+            <!-- end answers section -->
+            {!! Form::open(['id' => 'formAnswer', 'route' => 'home.post.postComment']) !!}
+                <h2 class="space">{{ __('page.post.comment') }}</h2>
+                <div class="post-editor js-post-editor js-wz-element">
+                    <div class="ps-relative"> 
+                        <div class="wmd-container mb8">
+                            {!! Form::textarea('content', null, ['id' => 'editor', 'class' => 'wmd-button-bar btr-sm', 'rows' => '8']) !!}
+                        </div>
+                        {{ Form::hidden('target', 3) }}
+                        {{ Form::hidden('key', $key, ['id' => 'keyInput']) }}
+                        <div><span id="formAnswerErrors" class="errors"></span></div>
+                        <div class="wmd-container mb8">
+                            <a class="btn postComment" data-ckeditor="yes" data-target="answersPost" data-form="formAnswer">{{ __('page.post.comment') }}</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {!! Form::close() !!}
+            {!! Form::close() !!}
+            @endif
+        @else
+            <div class="alert alert-danger text-center p-2"><h3 class="m-0">{{ __('alert.notify.block') }}</h3></div>
         @endif
+
     </div>
 </div>
 @endsection
