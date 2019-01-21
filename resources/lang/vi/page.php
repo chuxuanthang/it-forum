@@ -22,6 +22,7 @@ return [
         'report' => 'Báo cáo',
         'note' => 'Ghi chú',
         'edit' => 'Chỉnh sửa',
+        'delete' => 'Xóa',
         'posted' => 'đã viết',
         'active' => 'hoạt động',
         'oldest' => 'lâu nhất',

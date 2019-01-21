@@ -81,5 +81,6 @@ return [
         'name' => 'Name',
         'comment' => 'Comment',
         'type' => 'Type',
+        'description' => 'Description',
     ],
 ];

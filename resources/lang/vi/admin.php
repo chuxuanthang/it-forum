@@ -81,6 +81,7 @@ return [
         'name' => 'Tên',
         'comment' => 'Bình luận',
         'type' => 'Loại',
+        'description' => 'Mô tả',
     ],
 
     'day' => [

@@ -41,9 +41,14 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => '289602251670713',
-        'client_secret' => '18187d88d05170f9cbfab00586420673',
+        'client_id' => '2215777745353636',
+        'client_secret' => '3c8e810046020861d1b726b3e0198636',
         'redirect' => env('APP_URL') . '/auth/facebook/callback',
     ],
 
+    'google' => [
+        'client_id' => '226184312314-td3f78crp654q5t3kle1e9df3cthuite.apps.googleusercontent.com',
+        'client_secret' => 'kvJ_hV7sNeduNqWApgkfWpoS',
+        'redirect' => env('APP_URL') . '/auth/google/callback',
+    ],
 ];

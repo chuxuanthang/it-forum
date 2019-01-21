@@ -40,6 +40,10 @@
                 {!! Form::text('name', $tag->name, ['id' => 'name', 'class' => 'form-control', 'placeholder' => '*', 'required']) !!}
             </div>
             <div class="form-group">
+                {!! Form::label('description', __('admin.form.description')) !!}
+                {!! Form::textarea('description', $tag->description, ['id' => 'description', 'class' => 'form-control', 'placeholder' => '*', 'required']) !!}
+            </div>
+            <div class="form-group">
                 <div class="form-check">
                     {!! Form::checkbox('status', '1', config('constants.CHECKBOX.' . $tag->status), ['id' => 'status', 'class' => 'form-check-input']) !!}
                     {!! Form::label('status', __('admin.active'), ['class' => 'form-check-label']) !!}

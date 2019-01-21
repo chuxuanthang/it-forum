@@ -14,7 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
 
-mix.extract(['jquery', 'bootstrap']);
+mix.extract(['jquery']);
 
 mix.styles(
     [
@@ -31,7 +31,6 @@ mix.styles(
         'resources/css/admin/admin.css',
         'resources/css/admin/jquery-ui.min.css',
     ], 'public/css/admin.css');
-    
 mix.js(
     [
         'node_modules/@fortawesome/fontawesome-free/js/all.min.js',
@@ -45,6 +44,8 @@ mix.js('resources/js/post-detail.js', 'public/js/custom.js');
 mix.js('resources/js/notifications.js', 'public/js/notifications.js');
 // Runcode page
 mix.copy('resources/js/jquery-3.1.1.min.js', 'public/js/jquery.js');
+// file page
+mix.styles('resources/css/home/file.css', 'public/css/file.css');
 mix.copy('resources/js/bootstrap.min.js', 'public/js/bootstrap.js');
 mix.copyDirectory('node_modules/codemirror', 'public/plugins/codemirror');
 mix.styles(

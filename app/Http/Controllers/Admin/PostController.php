@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\PostRepositoryInterface;
 use App\Repositories\Contracts\TagRepositoryInterface;
+use App\Repositories\Contracts\AnswerRepositoryInterface;
 use App\Http\Requests\EditPostAdminRequest;
 use App\Post;
 use Input;
@@ -17,11 +18,16 @@ class PostController extends Controller
 {
     protected $postRepository;
     protected $tagRepository;
+    protected $answerRepository;
 
-    public function __construct(PostRepositoryInterface $postRepository, TagRepositoryInterface $tagRepository)
-    {
+    public function __construct(
+        PostRepositoryInterface $postRepository,
+        TagRepositoryInterface $tagRepository,
+        AnswerRepositoryInterface $answerRepository
+    ) {
         $this->postRepository = $postRepository;
         $this->tagRepository = $tagRepository;
+        $this->answerRepository = $answerRepository;
     }
 
     public function index()
@@ -154,5 +160,12 @@ class PostController extends Controller
         }
 
         return $reports;
+    }
+
+    public function deleteAnswer($id)
+    {
+        $this->answerRepository->delete($id);
+
+        return redirect()->back();
     }
 }
