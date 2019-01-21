@@ -20,7 +20,7 @@ class CreateFilesTable extends Migration
             $table->text('filename');
             $table->text('filename_ecrypt');
             $table->tinyInteger('is_folder')->unsigned()->default(1);
-            $table->text('parent_id')->default(0);
+            $table->text('parent_id');
             $table->softDeletes();
             $table->timestamps();
         });
