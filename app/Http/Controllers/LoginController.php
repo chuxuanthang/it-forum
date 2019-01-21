@@ -76,7 +76,7 @@ class LoginController extends Controller
             $input['gender'] = config('constants.DEFAULT_USER_GENDER');
             $input['image_path'] = config('constants.DEFAULT_USER_IMAGE') . random_int(1, 11) . config('constants.PNG');
             $input['role_id'] = config('constants.DEFAULT_USER_ROLE_ID');
-            $input['status'] = config('constants.DEFAULT_USER_STATUS');
+            $input['status'] = '0';
             if ($user = $this->userRepository->create($input)) {
                 event(new Registered($user));
 
@@ -107,6 +107,8 @@ class LoginController extends Controller
         }
         if ($user->markEmailAsVerified()) {
             event(new Verified($user));
+            $input['status'] = config('constants.DEFAULT_USER_STATUS');
+            $this->userRepository->update($input, Auth::id);
             \Session::flash('success_alert', __('alert.success.login'));
             Auth::guard()->login($user);
         }

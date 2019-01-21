@@ -31,6 +31,7 @@
                 <tr>
                     <th>{{ __('admin.form.id') }}</th>
                     <th>{{ __('admin.form.name') }}</th>
+                    <th>{{ __('admin.form.description') }}</th>
                     <th>{{ __('admin.category.post') }}</th>
                     <th>{{ __('admin.form.status') }}</th>
                     <th>{{ __('admin.form.action') }}</th>
@@ -47,6 +48,7 @@
                         <tr>
                             <td class="align-middle">{{ $i }}</td>
                             <td class="align-middle">{{ $tag->name }}</td>
+                            <td class="align-middle">{{ $tag->description }}</td>
                             <td class="align-middle">{{ $tag->posts->count() }}</td>
                             <td class="align-middle">{{ __('admin.' . config('constants.STATUS.' . $tag->status)) }}</td>
                             <td class="align-middle">

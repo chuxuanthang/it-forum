@@ -8,6 +8,7 @@ use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Http\Requests\AddUserRequest;
 use App\Http\Requests\EditUserRequest;
 use App\User;
+use Carbon\Carbon;
 use Input;
 use Auth;
 use Config;
@@ -88,6 +89,9 @@ class UserController extends Controller
         $input['birthday'] = date('Y-m-d', strtotime($input['birthday']));
         if (!isset($input['status'])) {
             $input['status'] = 0;
+            $input['email_verified_at'] = null;
+        } else {
+            $input['email_verified_at'] = Carbon::now();
         }
         $this->userRepository->update($input, $request->id);
 

@@ -39,6 +39,10 @@
                 {!! Form::text('name', '', ['id' => 'name', 'class' => 'form-control', 'placeholder' => '*', 'required']) !!}
             </div>
             <div class="form-group">
+                {!! Form::label('description', __('admin.form.description')) !!}
+                {!! Form::textarea('description', '', ['id' => 'description', 'class' => 'form-control', 'placeholder' => '*', 'required']) !!}
+            </div>
+            <div class="form-group">
                 <div class="form-check">
                     {!! Form::checkbox('status', '1', true, ['id' => 'status', 'class' => 'form-check-input']) !!}
                     {!! Form::label('status', __('admin.active'), ['class' => 'form-check-label']) !!}
