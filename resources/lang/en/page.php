@@ -22,6 +22,7 @@ return [
         'report' => 'Report',
         'note' => 'Note',
         'edit' => 'edit',
+        'delete' => 'Delete',
         'posted' => 'posted',
         'active' => 'active',
         'oldest' => 'oldest',

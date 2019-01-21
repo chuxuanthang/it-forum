@@ -146,4 +146,5 @@ Route::group(['middleware' => ['Language', 'auth', 'admin'], 'prefix' => 'admin'
         Route::get('/edit/{id}', 'Admin\ConfigController@edit')->name('admin.config.edit');
         Route::post('/update', 'Admin\ConfigController@update')->name('admin.config.update');
     });
+    Route::get('/answer/delete/{id}', 'Admin\PostController@deleteAnswer')->name('admin.answer.delete');
 });
