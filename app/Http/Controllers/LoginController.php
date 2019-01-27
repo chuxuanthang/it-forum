@@ -107,10 +107,10 @@ class LoginController extends Controller
         }
         if ($user->markEmailAsVerified()) {
             event(new Verified($user));
-            $input['status'] = config('constants.DEFAULT_USER_STATUS');
-            $this->userRepository->update($input, Auth::id);
-            \Session::flash('success_alert', __('alert.success.login'));
             Auth::guard()->login($user);
+            $input['status'] = config('constants.DEFAULT_USER_STATUS');
+            $this->userRepository->update($input, Auth::user()->id);
+            \Session::flash('success_alert', __('alert.success.login'));
         }
 
         return redirect()->route('home.index');
