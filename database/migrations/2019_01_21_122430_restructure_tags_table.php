@@ -14,7 +14,7 @@ class RestructureTagsTable extends Migration
     public function up()
     {
         Schema::table('tags', function (Blueprint $table) {
-            $table->text('description')->after('name')->default('');
+            $table->string('description')->after('name')->default('');
         });
     }
 
