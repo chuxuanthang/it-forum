@@ -24,7 +24,7 @@ class EditProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|alpha_dash|between:3,20|unique:users,username,' . \Auth::id(),
+            'username' => 'required|between:3,20|unique:users,username,' . \Auth::id(),
             'fullname' => 'required|max:100',
             'address' => 'required|max:100',
         ];
