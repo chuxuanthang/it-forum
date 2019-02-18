@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        URL::forceScheme('https');
+        // URL::forceScheme('https');
         Post::observe(PostObserver::class);
         Schema::defaultStringLength(191);
 
